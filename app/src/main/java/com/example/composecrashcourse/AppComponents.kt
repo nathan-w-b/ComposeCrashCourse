@@ -1,12 +1,16 @@
 package com.example.composecrashcourse
 
+import android.graphics.Paint.Align
 import android.util.Log
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Button
@@ -18,9 +22,13 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.AlignmentLine
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -153,4 +161,41 @@ fun TextFieldComponent(){
 @Composable
 fun TextFieldComponentPreview(){
     TextFieldComponent()
+}
+
+@Composable
+fun ImageComponent(){
+    Image(
+        modifier = Modifier
+            .wrapContentHeight()
+            .fillMaxWidth()
+            .background(Color.Black),
+        painter = painterResource(id = R.drawable.ic_launcher_foreground),
+        contentDescription = "Basic Icon BG",
+        contentScale = ContentScale.Crop
+    )
+}
+
+@Composable
+fun ImageComponentSnapshot(){
+    Image(
+        modifier = Modifier
+            .size(308.dp)
+            .clip(CircleShape),
+        painter = painterResource(id = R.drawable.ic_launcher_background),
+        contentDescription = "Icon BG",
+        contentScale = ContentScale.Crop
+    )
+}
+
+@Preview()
+@Composable
+fun ImageComponentPreview(){
+    ImageComponent()
+}
+
+@Preview(showSystemUi = true)
+@Composable
+fun ImageComponentSnapshotPreview(){
+    ImageComponentSnapshot()
 }
